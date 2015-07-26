@@ -487,16 +487,16 @@ public virtual with sharing class fflib_SObjectDomain
 	/**
 	 * Ensures logging of errors in the Domain context for later assertions in tests
 	 **/
-	public class ErrorFactory
+	public virtual class ErrorFactory
 	{
 		private List<Error> errorList = new List<Error>(); 
 		
-		private ErrorFactory()
+		public ErrorFactory()
 		{
 			
 		}
 		
-		public String error(String message, SObject record)
+		public virtual String error(String message, SObject record)
 		{
 			return error(null, message, record);	
 		}
@@ -511,7 +511,7 @@ public virtual with sharing class fflib_SObjectDomain
 			return message;	
 		}
 		
-		public String error(String message, SObject record, SObjectField field)
+		public virtual String error(String message, SObject record, SObjectField field)
 		{
 			return error(null, message, record, field);	
 		}
@@ -527,12 +527,12 @@ public virtual with sharing class fflib_SObjectDomain
 			return message;	
 		}	
 			
-		public List<Error> getAll()
+		public virtual List<Error> getAll()
 		{ 
 			return errorList.clone();
 		}
 		
-		public void clearAll()
+		public virtual void clearAll()
 		{
 			errorList.clear();
 		}					
@@ -541,11 +541,11 @@ public virtual with sharing class fflib_SObjectDomain
 	/**
 	 * Ensures logging of errors in the Domain context for later assertions in tests
 	 **/
-	public class FieldError extends ObjectError
+	public virtual class FieldError extends ObjectError
 	{
 		public SObjectField field;
 		
-		private FieldError()
+		public FieldError()
 		{		
 			
 		}
@@ -558,7 +558,7 @@ public virtual with sharing class fflib_SObjectDomain
 	{
 		public SObject record;
 		
-		private ObjectError()
+		public ObjectError()
 		{
 		
 		}
